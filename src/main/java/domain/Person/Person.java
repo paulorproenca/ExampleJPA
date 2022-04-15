@@ -1,39 +1,46 @@
 package domain.Person;
 
-import domain.shared.AggregateRoot;
+import util.BusinessValidation;
+
 import javax.persistence.*;
 
 @Entity
-public class Person implements AggregateRoot<IdentificationNumber> {
+public class Person  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private IdentificationNumber _identificationNumber;
-    private Name _nome;
-    private Email _email;
+    private String _identificationNumber;
+    private String _nome;
+    private String _email;
 
     public Person(String identificationNumber, String name, String email){
-        this._identificationNumber = new IdentificationNumber(identificationNumber);
-        this._nome = new Name(name);
-        this._email = new Email(email);
+        BusinessValidation.nonEmpty(identificationNumber,"identification number should neither be null nor empty");
+        this._identificationNumber = identificationNumber;
+
+        BusinessValidation.nonEmpty(name,"person name should neither be null nor empty");
+        this._nome=name;
+
+        BusinessValidation.nonEmpty(email,"email address  should neither be null nor empty");
+        BusinessValidation.isEmail(email,"Invalid E-mail format");
+        this._email=email;
     }
 
     /* For ORM purposes */
     protected Person(){}
 
-    @Override
+
     public boolean sameAs(Object other) {
         return false;
     }
 
-    @Override
-    public IdentificationNumber identity() {
+
+    public String identity() {
         return this._identificationNumber;
     }
 
     public String toString()
     {
-        return "Person( " + this._nome.name() + " | " + this._email.email() +  " | " + this._identificationNumber.toString() + " )";
+        return "Person( " + this._nome + " | " + this._email +  " | " + this._identificationNumber + " )";
     }
 }
 

@@ -11,7 +11,7 @@ public class test {
         System.out.println("---------------------------------------------------------------------------------");
         
         try {
-            Person joe = ctrl.createPerson("9064752-4-02X", "Joe Smith", "joe@mail.upskill.com");
+            Person joe = ctrl.createPerson("9064752-4-02X", "Johe Smith", "joe@mail.upskill.com");
             System.out.println(joe.toString());
         } catch (Exception e) {
             System.out.println(e.getMessage());

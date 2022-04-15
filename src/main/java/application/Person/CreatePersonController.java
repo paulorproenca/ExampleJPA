@@ -1,19 +1,16 @@
 package application.Person;
 
 import domain.Person.Person;
-import repository.PersonRepositiry;
 
 public class CreatePersonController {
 
-    private PersonRepositiry personRepository;
+    private final CreatePersonService personService = new CreatePersonService();;
 
-    public CreatePersonController(){
-        this.personRepository= new PersonRepositiry();
-    }
+    public CreatePersonController(){}
 
     public Person createPerson(final String idnumber, final String name, final String email) {
         final Person person = new Person(idnumber, name, email);
-        this.personRepository.add(person);
+        this.personService.save(person);
         return person;
     }
 
