@@ -10,10 +10,10 @@
     <properties>
 
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/db/rac"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/db/upskillDB"/>
   
-      <property name="javax.persistence.jdbc.user" value="anc"/>
-      <property name="javax.persistence.jdbc.password" value="anc"/>
+      <property name="javax.persistence.jdbc.user" value="upskill"/>
+      <property name="javax.persistence.jdbc.password" value="upskill"/>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 
     </properties>
