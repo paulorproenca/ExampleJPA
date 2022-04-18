@@ -16,7 +16,7 @@ public class test {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-/*
+
         System.out.println("\nCREATE [MARY MORISON] Expected: bad email------------------------------------");
 
         try {
@@ -68,7 +68,5 @@ public class test {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
- */
     }
 }

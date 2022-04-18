@@ -9,20 +9,20 @@ public class Person  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String XidentificationNumber;
-    private String Xnome;
-    private String Xemail;
+    private String personIdentificationNumber;
+    private String personName;
+    private String personEmail;
 
     public Person(String identificationNumber, String name, String email){
         BusinessValidation.nonEmpty(identificationNumber,"identification number should neither be null nor empty");
-        this.XidentificationNumber = identificationNumber;
+        this.personIdentificationNumber = identificationNumber;
 
         BusinessValidation.nonEmpty(name,"person name should neither be null nor empty");
-        this.Xnome=name;
+        this.personName=name;
 
         BusinessValidation.nonEmpty(email,"email address  should neither be null nor empty");
         BusinessValidation.isEmail(email,"Invalid E-mail format");
-        this.Xemail=email;
+        this.personEmail=email;
     }
 
     /* For ORM purposes */
@@ -35,12 +35,12 @@ public class Person  {
 
 
     public String identity() {
-        return this.XidentificationNumber;
+        return this.personIdentificationNumber;
     }
 
     public String toString()
     {
-        return "Person( " + this.Xnome + " | " + this.Xemail +  " | " + this.XidentificationNumber + " )";
+        return "Person( " + this.personName + " | " + this.personEmail +  " | " + this.personIdentificationNumber + " )";
     }
 }
 
