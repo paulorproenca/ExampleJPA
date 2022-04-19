@@ -3,7 +3,7 @@ package app;
 import application.Person.PersonController;
 import domain.Person.Person;
 
-public class test {
+public class testPerson {
     public static void main(String[] args) {
 
         PersonController ctrl = new PersonController();
