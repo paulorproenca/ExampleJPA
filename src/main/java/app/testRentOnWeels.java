@@ -2,8 +2,12 @@ package app;
 
 import application.Car_Group.CarGroupController;
 import application.Car.CarController;
+import application.Person.PersonController;
+import application.Contract.ContractController;
 import domain.Car_Group.CarGroup;
 import domain.Car.Car;
+import domain.Contract.Contract;
+import domain.Person.Person;
 
 public class testRentOnWeels {
     public static void main(String[] args) {
@@ -56,6 +60,25 @@ public class testRentOnWeels {
             for (Car car : fleet) {
                 System.out.println(car.toString());
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("\nCREATE [JOE SMITH] Expected: Success-----------------------------------------");
+
+        PersonController ctrlPerson = new PersonController();
+        try {
+            Person joe = ctrlPerson.createPerson("9064752-4-02X", "Joe Smith", "joe@mail.upskill.com");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("\nCREATE CONTRACT [JOE SMITH, AB-88-BA] Expected: Success-----------------------------------------");
+
+        ContractController ctrlContract = new ContractController();
+        try {
+            Contract newOne = ctrlContract.createContract(1L,"AB-88-BA");
+            System.out.println(newOne.toString());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
