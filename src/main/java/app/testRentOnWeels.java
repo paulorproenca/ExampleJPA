@@ -8,6 +8,7 @@ import domain.Car_Group.CarGroup;
 import domain.Car.Car;
 import domain.Contract.Contract;
 import domain.Person.Person;
+import domain.Contract.ContractBuilder;
 
 public class testRentOnWeels {
     public static void main(String[] args) {
@@ -77,7 +78,13 @@ public class testRentOnWeels {
 
         ContractController ctrlContract = new ContractController();
         try {
-            Contract newOne = ctrlContract.createContract(1L,"AB-88-BA");
+            Contract newOne = ctrlContract.createContract(new ContractBuilder()
+                                                                .withPerson(1L)
+                                                                .withCar("AB-88-BA")
+                                                                .withDriver("Kim Joe",123456,"12-09-2034")
+                                                                .withDriver("John White",537612,"01-05-2025")
+                                                                .withDriver("Ben Hugh",312421,"09-12-2041")
+                                                                .build());
             System.out.println(newOne.toString());
         } catch (Exception e) {
             System.out.println(e.getMessage());

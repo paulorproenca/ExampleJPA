@@ -8,6 +8,7 @@
     <class>domain.Car_Group.CarGroup</class>
     <class>domain.Car.Car</class>
     <class>domain.Contract.Contract</class>
+    <class>domain.Driver.Driver</class>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@vsrvbd1.dei.isep.ipp.pt:1521/pdborcl" />

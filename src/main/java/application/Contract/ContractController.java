@@ -1,9 +1,6 @@
 package application.Contract;
 
-import application.Car.CarService;
-import application.Person.PersonService;
-import domain.Car.Car;
-import domain.Person.Person;
+
 import domain.Contract.Contract;
 
 
@@ -14,7 +11,13 @@ public class ContractController {
 
     public ContractController(){}
 
-    public Contract createContract(final Long personID, final String plate) {
+    public Contract createContract(Contract contract) {
+        this.theService.save(contract);
+        return contract;
+    }
+
+    /*
+        public Contract createContract(final Long personID, final String plate) {
 
         PersonService thePersonService = new PersonService();
         Person person=thePersonService.findById(personID);
@@ -22,10 +25,12 @@ public class ContractController {
         CarService theCarService = new CarService();
         Car car=theCarService.findById(plate);
 
-        final Contract contract = new Contract(person,car);
+        final Contract contract = new ContractBuilder(car, person).withDriver("Kim Joe",123456,"12-09-2034").build();
         this.theService.save(contract);
         return contract;
     }
+
+     */
 
     public Contract findContract(final Long id) {
         return this.theService.findById(id);

@@ -1,10 +1,13 @@
 package domain.Contract;
 
 import domain.Car.Car;
+import domain.Driver.Driver;
 import domain.Person.Person;
 import util.BusinessValidation;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Contract {
@@ -15,10 +18,13 @@ public class Contract {
     private Car car;
     @OneToOne
     private Person person;
+    @OneToMany
+    private List<Driver> drivers= new ArrayList<>();
 
-    public Contract(Person p, Car c){
-        this.person=p;
-        this.car=c;
+    public Contract(ContractBuilder builder){
+        this.person=builder.person;
+        this.car=builder.car;
+        this.drivers=builder.drivers;
     }
 
     /* For ORM purposes */
@@ -32,9 +38,18 @@ public class Contract {
         return this.contractID;
     }
 
+    private String listdrivers()
+    {
+        String str = "";
+        for (Driver d : this.drivers) {
+            str = str + "\n\t" + d.toString();
+        }
+        return str;
+    }
+
     public String toString()
     {
-        return "Contact( " +  this.person.toString() +  " | " + this.car.toString() + " )";
+        return "Contact( " +  this.person.toString() +  " | " + this.car.toString() +  " | " + this.listdrivers() + " )";
     }
 }
 
